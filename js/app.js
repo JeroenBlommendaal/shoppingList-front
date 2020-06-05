@@ -74,6 +74,15 @@ document.addEventListener("keyup", function (event) {
             localStorage.setItem("item", JSON.stringify(LIST));
             input.value = "";
             id++;
+            fetch('http://localhost:3000/product', {
+                method: 'post',
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    product: item
+                })
+            })
+            .then(reponse => Response.json())
+            .catch(error)
         }
     }
 });
